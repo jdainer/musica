@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="fondo.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+   <link rel="manifest" href="manifest.json">
+   <title>listados de canciones</title>
+</head>
+<body>
+
+  <header class="header">
+    <div class="brand">
+      <span class="logo"><img src="img/icon-192.png" alt="logo"></span> 
+   lista  de canciones por tonos
+    </header>
+    </div>
+    <div class="search-container">
+      <input type="text" id="perfume-search" placeholder="busca una cancion...">
+      <div id="search-results" class="hidden"></div>
+    </div>
+    <div id="step-1" class="step">
+  </header>
+
+  <aside class="sidebar">
+  <div class="menu-title">Tonos Mayores</div>
+  <ul class="menu-list-responsive">
+    <li class="menu-item" data-menu="do mayor">Do</li>
+    <li class="menu-item" data-menu="re mayor">Re</li>
+    <li class="menu-item" data-menu="mi mayor">Mi</li>
+    <li class="menu-item" data-menu="fa mayor">Fa</li>
+    <li class="menu-item" data-menu="sol mayor">Sol</li>
+    <li class="menu-item" data-menu="la mayor">La</li>
+    <li class="menu-item" data-menu="si mayor">Si</li>
+  </ul>
+  <div class="menu-title">Tonos Menores</div>
+  <ul class="menu-list-responsive">
+    <li class="menu-item" data-menu="do menor">Do m</li>
+    <li class="menu-item" data-menu="re menor">Re m</li>
+    <li class="menu-item" data-menu="mi menor">Mi m</li>
+    <li class="menu-item" data-menu="fa menor">Fa m</li>
+    <li class="menu-item" data-menu="sol menor">Sol m</li>
+    <li class="menu-item" data-menu="la menor">La m</li>
+    <li class="menu-item" data-menu="si menor">Si m</li>
+  </ul>
+</aside>
+  
+
+      <section class="content">
+        <div id="panel" class="card fade">
+           <div class="note-block">Selecciona un tono a la izquierda.</div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="app-footer">
+  <p>
+    <span class="footer-icon">𝄞</span>
+    Diseño <strong>Jhon Dainer Ariasoftware </strong> · 2026
+  </p>
+</footer>
+<audio id="audio-tono" preload="auto"></audio>
+  <script src="data.js"></script>
+</body>
+</html>

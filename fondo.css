@@ -1,0 +1,295 @@
+/* 1. Variables Globales y Reset */
+:root {
+    --primary: #fcaf0a;
+    --accent: #6284f3;
+    --bg: #0a0a0a;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --border: rgba(19, 226, 233, 0.288);
+    --text-muted: #888;
+    --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--primary);
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.ticker-wrapper {
+    display: inline-block;
+    animation: ticker 20s linear infinite;
+}
+
+@keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.brand {
+    font-size: 1.2rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo img { width: 32px; height: 32px; filter: drop-shadow(0 0 8px var(--accent)); }
+
+/* 3. Layout */
+.container { padding: 2rem 5%; }
+.grid { display: grid; grid-template-columns: 280px 1fr; gap: 2rem; }
+
+/* 4. Sidebar y Menu Horizontal (Mejor Práctica) */
+.sidebar {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    height: fit-content;
+}
+
+.menu-title {
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+/* Lista con Scroll Horizontal */
+.menu-list-responsive {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 10px;
+    list-style: none;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Ocultar barra de scroll pero permitir el movimiento */
+.menu-list-responsive::-webkit-scrollbar { display: none; }
+.menu-list-responsive { -ms-overflow-style: none; scrollbar-width: none; }
+
+.menu-item {
+    flex: 0 0 75px; /* Tamaño fijo para el scroll horizontal */
+    scroll-snap-align: start;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 15px 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+.menu-item:hover, .menu-item:active {
+    background: var(--accent);
+    color: #000;
+    transform: translateY(-2px);
+}
+
+/* 5. Contenido & Canciones */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.card .h2 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    background: linear-gradient(to right, #fff, #888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.song-item {
+    display: flex;
+    justify-content: space-between;
+    background: rgb(0, 10, 10);
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border);
+}
+
+.btn {
+    background: var(--primary);
+    color: #000;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* 6. Animaciones */
+.fade { animation: fadeIn 0.8s ease-out; }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    /* Reduce el espacio del contenedor del menú */
+    .sidebar {
+        padding: 1rem; /* Menos espacio interno */
+    }
+
+    /* Ajusta el tamaño de la rejilla de botones */
+    .menu-list-responsive {
+        display: flex;
+        overflow-x: auto;
+        gap: 5px; /* Espacio más pequeño entre botones */
+        padding-bottom: 4px;
+    }
+
+    /* Hace los botones más pequeños y cuadrados */
+    .menu-item {
+        flex: 0 0 55px; /* Ancho fijo más pequeño (antes era 75px) */
+        min-height: 55px; /* Altura fija para que sean cuadrados */
+        padding: 0; /* Quitamos padding para centrar manualmente */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem; /* Letra un poco más pequeña */
+        border-radius: 10px; /* Bordes un poco más cerrados */
+    }
+}
+/* Contenedor principal */
+.search-container {
+    position: relative; /* Necesario para que los resultados floten debajo */
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+    z-index: 100; /* Asegura que esté por encima de otros elementos */
+}
+
+/* El campo de texto */
+#song-search {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 50px; /* Bordes redondeados estilo moderno */
+    padding: 15px 25px;
+    color: rgb(177, 252, 245);
+    font-size: 1rem;
+    outline: none;
+    transition: var(--transition);
+    backdrop-filter: blur(5px);
+}
+
+#song-search:focus {
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 15px rgba(209, 255, 0, 0.2);
+}
+
+/* Caja de resultados dinámicos */
+#search-results {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    background: #151515;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+/* Clase para ocultar los resultados */
+.hidden {
+    display: none !important;
+}
+
+/* Cada ítem de resultado */
+.search-item {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-item:last-child {
+    border-bottom: none;
+}
+
+.search-item:hover {
+    background: rgba(209, 255, 0, 0.1);
+}
+
+.search-item strong {
+    color: var(--accent);
+    font-size: 0.95rem;
+}
+
+.search-item small {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+/* Personalización de la barra de scroll de los resultados */
+#search-results::-webkit-scrollbar {
+    width: 6px;
+}
+#search-results::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 10px;
+}@media (max-width: 768px) {
+    .search-container {
+        padding: 0 10px;
+        margin-bottom: 1rem;
+    }
+    
+    #-search {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* --- FOOTER --- */
+.app-footer {
+    margin-top: 50px;
+    text-align: center;
+    opacity: 0.6;
+    font-size: 0.85rem;
+}
+
+.footer-icon {
+    color: var(--gold);
+    margin-right: 5px;
+}
