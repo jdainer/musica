@@ -107,8 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 1. Saludo y encabezado personalizado
     let text = ` *¡Dios te bendiga!* \n`;
-    text += `Te comparto este listado de canciones para el servicio de hoy:\n\n`;
-    text += `🎼 Hacedlo bien, tañendo con júbilo\n \n`;
+    text += `Te comparto este listado de canciones:\n\n`;
     text += `🎹 *Tono:* ${tone.toUpperCase()}\n`;
     text += `📅 *Fecha:* ${fecha}\n`;
     
@@ -118,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
         text += `${i + 1}️  ${s.nombre}`;
     });
 
-    text += `➡🌎ingresa a https://jdainer.github.io/musica/\n\n\n\n`;
+    text += `➡🌎ingresa a https://jdainer.github.io/musica/\n`;
     text += `para usar esta herramienta✨`;
     
     // 3. Apertura de enlace
@@ -208,3 +207,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     renderSongs("do mayor");
 });
+
