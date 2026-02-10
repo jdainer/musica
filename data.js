@@ -109,15 +109,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let text = ` *¡Dios te bendiga!* \n`;
     text += `Te comparto este listado de canciones:\n\n`;
     text += `🎹 *Tono:* ${tone.toUpperCase()}\n`;
-    text += `📅 *Fecha:* ${fecha}\n`;
-    
-
     // 2. Listado numerado
     songs.forEach((s, i) => {
-        text += `${i + 1}️  ${s.nombre}`;
+        text += `${i + 1}️  ${s.nombre}\n`;
     });
 
-    text += `➡🌎ingresa a https://jdainer.github.io/musica/\n`;
+    text += `\n🌎ingresa a https://jdainer.github.io/musica/\n`;
     text += `para usar esta herramienta✨`;
     
     // 3. Apertura de enlace
@@ -207,4 +204,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     renderSongs("do mayor");
 });
+
 
