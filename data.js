@@ -115,10 +115,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 2. Listado numerado
     songs.forEach((s, i) => {
-        text += `${i + 1}️  ${s.nombre}\n\n\n\n\n`;
+        text += `${i + 1}️  ${s.nombre}`;
     });
 
-    text += `➡🌎ingresa a https://github.com/jdainer/musica.git.\n\n\n\n`;
+    text += `➡🌎ingresa a https://jdainer.github.io/musica/\n\n\n\n`;
     text += `para usar esta herramienta✨`;
     
     // 3. Apertura de enlace
